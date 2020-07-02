@@ -1,0 +1,30 @@
+{% for post in posts %}
+    <!-- Blog entry -->
+    <div class="w3-card-4 w3-margin w3-white">
+        <img src="/w3images/woods.jpg" alt="Nature" style="width:100%">
+
+        <div class="w3-container">
+            <h3 class="uppercase">{{ post.titulo }}</h3>
+            <h5 class="w3-cell-row">
+                <span class="w3-cell">Por {{ post.autor.get_full_name }}</span>
+                <span class="w3-cell w3-opacity texto-direita">{{ post.criado }}</span>
+            </h5>
+        </div>
+
+        <div class="w3-container">
+            <p>{{ post.post|truncatechars:200 }}</p>
+
+            <div class="w3-row">
+                <div class="w3-col m8 s12 w3-padding-16">
+                    <a href="{% url 'blog:ver-post' titulo=post.slug %}" class="w3-button w3-padding-large w3-white w3-border uppercase negrito">Leia »</a>
+                </div>
+
+                <div class="w3-col m4 w3-hide-small w3-padding-16">
+                    <span class="w3-padding-large w3-right"> <span class="negrito">Comentários</span> <span class="w3-tag">{{ post.comentarios.count }}</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if not forloop.last %}<hr>{% endif %}
+{% endfor %}

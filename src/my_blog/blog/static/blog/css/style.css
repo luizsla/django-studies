@@ -1,0 +1,27 @@
+/* CSS base do blog */
+body, h1, h2, h3, h4, h5 {
+    font-family: "Raleway", sans-serif;
+}
+
+.conteudo {
+    max-width: 1400px;
+}
+
+/* Imagem */
+.imagem-resposiva {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Texto */
+.negrito {
+    font-weight: bold;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.texto-direita {
+    text-align: right;
+}

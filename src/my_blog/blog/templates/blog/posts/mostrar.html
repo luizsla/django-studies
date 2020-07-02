@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block titulo %} {{ post }}{% endblock titulo %}
+
+{% block conteudo_interno %}
+    <div class="w3-row">
+        {# Listagem de posts #}
+        <div class="w3-col l8 s12">
+            <div class="w3-card-4 w3-margin w3-white">
+                <img src="{{ post.imagem.url }}" alt="{{ post.imagem.name }}" class="imagem-resposiva">
+
+                <div class="w3-container">
+                    <h3 class="uppercase">{{ post.titulo }}</h3>
+                    <h5 class="texto-direita w3-opacity">{{ post.criado }}</h5>
+                    
+                    <hr>
+                    {{ post.post }}
+                    <hr>
+
+                    <p class="texto-direita">
+                        <span class="negrito">Comentários</span> <span class="w3-tag">{{ post.comentarios.count }}</span>
+                    </p>
+                </div>
+            </div>  
+        </div>
+
+        {# Menu lateral #}
+        <div class="w3-col l4">
+            {# Autor #}
+            {% include 'blog/partials/descricao_autor.html' with autor=post.autor only %}
+
+            {# Posts #}
+            {% include 'blog/partials/posts_populares.html' with posts=posts_populares %}
+            <hr> 
+
+            {# Tags #}
+            {% include 'blog/partials/tags.html' with tags=post.tags.all %}
+        </div>
+    </div>
+{% endblock conteudo_interno %}

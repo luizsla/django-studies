@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block titulo %} Bem vindo!{% endblock titulo %}
+
+{% block conteudo_interno %}
+    <div class="w3-row">
+        {# Listagem de posts #}
+        <div class="w3-col l8 s12">
+            {% include 'blog/partials/lista_posts.html' with posts=posts %}    
+        </div>
+
+        {# Menu lateral #}
+        <div class="w3-col l4">
+            {# Posts #}
+            {% include 'blog/partials/posts_populares.html' with posts=posts_populares %}
+            <hr> 
+
+            {# Tags #}
+            {% include 'blog/partials/tags.html' %}
+        </div>
+    </div>
+{% endblock conteudo_interno %}
